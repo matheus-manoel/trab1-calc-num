@@ -14,6 +14,7 @@ def bissecao(a_0, b_0, precision, max_iter):
     result = {
         'value': float(0),
         'error': False,
+        'error_msg': '',
         'x': x,
         'a': a,
         'b': b,
@@ -30,6 +31,7 @@ def bissecao(a_0, b_0, precision, max_iter):
 
     if f(a[0]) * f(b[0]) > 0:
         result['error'] = True
+        result['error_msg'] = 'Mesmo sinal de f(a0) e f(b0).'
         return result
 
     x[0] = a[0]
@@ -54,6 +56,7 @@ def bissecao(a_0, b_0, precision, max_iter):
             b[k] = b[k-1]
 
     result['error'] = True
+    result['error_msg'] = 'Número máximo de iterações atingido.'
     return result
 
 
@@ -69,18 +72,12 @@ def print_table(result, error):
 
 
 if __name__ == '__main__':
-    a_0 = float(input('a0: '))
-    b_0 = float(input('b0: '))
-    precision = float(input('precision: '))
-    max_iter = int(input('max_iter: '))
+    a_0 = float(input())
+    b_0 = float(input())
+    precision = float(input())
+    max_iter = int(input())
 
     result = bissecao(a_0, b_0, precision, max_iter)
 
     if not result['error']:
-        print(result)
-        print(f(result['value']))
-        print('a: ' + str(result['a']))
-        print('b: ' + str(result['b']))
-        print('x: ' + str(result['x']))
-        print('error: ' + str(calculate_error(result['x'], result['value'])))
         print_table(result, calculate_error(result['x'], result['value']))
