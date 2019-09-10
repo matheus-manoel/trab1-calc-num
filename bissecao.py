@@ -66,7 +66,7 @@ def calculate_error(x, result_value):
 
 def print_table(result, error):
     print('{: <15}'.format('k') + '{: <12}'.format('a') + '{: <12}'.format('b') + '{: <12}'.format('x_k') + '{: <12}'.format('f_x_k') + '{: <12}'.format('e_k'))
-    for k in range(1, len(result['x'])):
+    for k in range(0, len(result['x'])):
         print('{:12f}'.format(k) + '{:12f}'.format(result['a'][k]) + '{:12f}'.format(result['b'][k]) + '{:12f}'.format(result['x'][k]) + '{:12f}'.format(result['f'][k]) + '{:12f}'.format(error[k]))
 
 
